@@ -1,0 +1,427 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{pdflscape}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{transparent}
+\usepackage{array}
+\usepackage{pgfplotstable}
+\usepackage{subfigure}
+\usepackage{longtable}
+\pagestyle{fancy}
+\fancyhead[C]{ABX Solutions, LLC}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{}
+\fancyfoot[C]{ABX Solutions, LLC\\
+2340 Treescape Drive Ste.8, Charleston, South Carolina, 29414\\
+DO NOT use or COPY without WRITTEN PERMISSON from ABX Solutions, LLC}
+
+\def\clientfirstname{}
+\def\clientlastname{}
+\def\momname{}
+\def\dadname{}
+\def\DOB{}
+\def\SSN{}
+\def\diagnosingProvider{}
+\def\diagnosis{Autism Spectrum Disorder F84.0}
+\def\severity{Level 3}
+\def\initial{}
+\def\start{}
+\def\ending{}
+\def\progduemonth{}
+\def\progdueyear{}
+\def\BCBAhours{}
+\def\tutorhours{}
+\def\totalhours{}
+\def\tutor{}
+\def\clientinitials{}
+
+
+\title{\clientfirstname\ \clientlastname\ Progress Report}
+\date{}
+
+\begin{document}
+\tableofcontents
+\newpage
+\maketitle
+\thispagestyle{fancy}
+
+\section{Basic Information}
+
+	\subsection{Identifying Data}
+
+	\vspace{.5cm} % vspace is specifies vertical space  OR could use \smallskip OR \bigskip
+
+		\begin{tabular}{|c||c|} % l is for left align, c is for center, r is for right
+		% bars | | make vertical lines around table...\hline makes horizontal lines...doing twice makes double bars
+		\hline\hline
+		Name & \clientfirstname\ \clientlastname\\
+		\hline\hline
+		Parents' Names &  \momname\ and \dadname \\
+		\hline\hline
+		DOB & \DOB \\
+		\hline\hline
+		Sponsor ID Number & \SSN\\
+		\hline\hline
+		\end{tabular}
+
+	\subsection{Diagnosing Provider}
+
+	\vspace{.5cm}
+
+		\begin{tabular}{|c||c|}
+		\hline\hline
+		Diagnosing Provider & \diagnosingProvider\\
+		\hline\hline
+		Referring Provider DSM diagnosis &  \diagnosis\\
+		\hline\hline
+		Referring Provider Severity Level & \severity\\
+		\hline\hline
+		\end{tabular}
+
+	\subsection{Behavior Analyst Information}
+
+		\begin{tabular}{|c||c|} 
+		\hline\hline
+		ABA Supervisor & Blake Crosby, M.Ed., BCBA\\
+		\hline\hline
+		ABA Provider &  ABX Solutions \\
+		\hline\hline
+		Phone & 843-814-2853 \\
+		\hline\hline
+		Fax & 843-573-7373\\
+		\hline\hline
+		Email & ptsouth97@gmail.com\\
+		\hline\hline
+		Date of Initial Assessment & \initial\\
+		\hline\hline
+		Current treatment period & \start\ to \ending\\
+		\hline\hline
+		Progress report date & \progduemonth\ \progdueyear\\
+		\hline\hline
+		\end{tabular}
+
+	\subsection{Treatment Snapshot}
+
+		\begin{itemize}
+		\item \textbf{How long has the beneficiary received ABA:} years
+		\item \textbf{Projected duration of ABA:} years
+		\item \textbf{Is the beneficiary able to actively participate:} 
+		\item \textbf{Academic Setting:} 
+		\item \textbf{How many hours enrolled in school per week:}
+		\item \textbf{How many hours enrolled in other services:} 
+		\item \textbf{IEP statement:}  
+		\item \textbf{Behavior challenges present:} 
+		\item \textbf{Behavior reduction/Crisis Plan:} 
+		\item \textbf{Family History:} 
+		\item \textbf{Medical History \& Medication:} 
+		\end{itemize}
+
+\section{Assessment Tools and Results}
+A variety of tools were used to assess Emanuel’s present level of functioning.  Those tools and their results are reported below.  
+
+	\begin{enumerate}
+	\item Vineland II
+	\item PDDBI
+	\item Ecological Inventory and Routine Analysis
+	\item Parent Interview
+	\end{enumerate}
+
+	\subsection{Vineland II}
+	The Vineland II is a measure of personal and social skills needed for everyday living in the domains of communication, daily living skills, socialization, motor skills, and maladaptive behavior. \momname\ served as the informant. 
+
+
+	\subsection{PDD Behavior Inventory (PDDBI)}
+	The PDDBI is a clinical tool that is age-standardized on children aged 1 year 6 months to 18 years diagnosed with any of the Pervasive Developmental Disorders identified in the DSM-IV.  \momname\ completed the Parent Rating form and Blake 			Crosby completed the teacher form.  Cluster Score Summary Tables for both Raters are included below. 
+
+		\subsubsection{Parent Rating}
+
+			\pgfplotstableread[col sep=comma]{\clientinitials-PPDDBI-\progduemonth\progdueyear.csv}\parent
+			\def\getcell#1#2#3{
+			\pgfplotstablegetelem{#1}{#2}\of{#3}\pgfplotsretval%
+			}
+			\pgfplotsset{compat=1.7}
+			
+			\begin{figure}[htbp]
+			\begin{center}
+			\pgfplotstabletypeset[
+				col sep=comma,
+    			string type,
+    			columns/Domain/.style={column name=Domain, column type={|l}},
+				columns/Raw score/.style={column name=Raw score, column type={|c}},
+   				columns/T score/.style={column name=T score, column type={|c|}},
+				columns/0.9 CI/.style={column name=0.9 CI, column type={c|}},
+    			every head row/.style={before row=\hline,after row=\hline},
+    			every last row/.style={after row=\hline},
+   		 		]\parent
+			\end{center}
+			\caption{Parent Domain/Composite Score Summary Table}
+			\label{fig:PPDDBI}
+			\end{figure}
+			
+			\vfill
+			\clearpage
+
+			\newpage
+			\vfill
+			\begin{figure}
+				\begin{center}
+				\includegraphics[]{\clientinitials-PPDDBI-cluster1-\progduemonth\progdueyear.png}
+				\caption{Parent Cluster Score Summary Table}
+				\label{fig:parentcomposite}
+			\end{center}
+			\end{figure}
+			\vfill
+			\clearpage
+
+			\newpage
+			\vfill
+			\begin{figure}
+			\begin{center}
+				\includegraphics[]{\clientinitials-PPDDBI-cluster2-\progduemonth\progdueyear.png}
+				\caption{Parent Cluster Score Summary Table continued}
+			\end{center}
+			\end{figure}
+			\vfill
+			\clearpage
+
+			\newpage
+			\vfill
+			\begin{figure}
+			\begin{center}
+				\includegraphics[]{\clientinitials-PPDDBI-graph-\progduemonth\progdueyear.png}
+				\caption{Parent T-Score Profile}
+			\end{center}
+			\end{figure}
+			\vfill
+			\clearpage
+
+		\subsubsection{Teacher Rating}
+
+			
+			%\vfill
+			%\clearpage
+			\pgfplotstableread[col sep=comma]{\clientinitials-TPDDBI-\progduemonth\progdueyear.csv}\teacher
+			\def\getcell#1#2#3{
+			\pgfplotstablegetelem{#1}{#2}\of{#3}\pgfplotsretval%
+			}
+			\pgfplotsset{compat=1.7}
+			\begin{figure}[htbp]
+			\begin{center}
+			\pgfplotstabletypeset[
+				col sep=comma,
+    			string type,
+    			columns/Domain/.style={column name=Domain, column type={|l}},
+				columns/Raw score/.style={column name=Raw score, column type={|c}},
+   				columns/T score/.style={column name=T score, column type={|c|}},
+				columns/0.9 CI/.style={column name=0.9 CI, column type={c|}},
+    			every head row/.style={before row=\hline,after row=\hline},
+    			every last row/.style={after row=\hline},
+   		 		]\teacher
+			\end{center}
+			\caption{Teacher Domain/Composite Score Summary Table}
+			\label{fig:teachercomposite}
+			\end{figure}			
+			\newpage
+			\vfill
+
+			\begin{figure}
+				\begin{center}
+				\includegraphics[]{\clientinitials-TPDDBI-cluster1-\progduemonth\progdueyear.png}
+				\caption{Teacher Cluster Score Summary Table}
+				\label{fig:composite}
+				\end{center}
+			\end{figure}
+			\vfill
+			\clearpage
+
+			\newpage
+			\vfill
+			\begin{figure}
+			\begin{center}
+				\includegraphics[]{\clientinitials-TPDDBI-cluster2-\progduemonth\progdueyear.png}
+				\caption{Teacher Cluster Score Summary Table continued}
+			\end{center}
+			\end{figure}
+			\vfill
+			\clearpage
+
+			\newpage
+			\vfill
+			\begin{figure}
+			\begin{center}
+				\includegraphics[]{\clientinitials-TPDDBI-graph-\progduemonth\progdueyear.png}
+				\caption{Teacher T-Score Profile}
+			\end{center}
+			\end{figure}
+			\vfill
+			\clearpage
+
+	\subsection{Parent Interview}
+	\clientfirstname's parents report 
+
+\section{FBA/BIP Statement}
+
+\begin{landscape}
+\section{Treatment Plan - Goals and Objectives}
+
+\textbf{Domain: Social Communication and Social Interaction}\\
+	
+	\begin{tabular}{|p{11cm}|p{11cm}|}
+	\hline
+	\textbf{Goal 1:  \clientfirstname\ will increase social-emotional reciprocity (i.e., the back and forth flow of social interaction) by \ending.} & \textbf{MEDICAL NECESSITY:  \clientfirstname\ has a Parent PDDBI Composite score of \getcell{9}{T score} {\parent} in the Social Approach (SOCAPP) category which puts him more than one standard deviation below the mean (see Figure~\ref{fig:PPDDBI}).  He has difficulty with social-emotional reciprocity as evidenced by abnormal social approach, failure of back and forth conversations, reduced sharing of interests, reduced sharing of emotions, and lack of initiation of social interaction.} \\ 
+	\hline
+	Objective 1: \clientfirstname\ will offer help \underline{\hspace{0.5cm}}when appropriate in the home or natural environment for 80\% of opportunities for 10 consecutive sessions.\newline\newline
+	Sd1: with a visual prompt\newline
+	Sd2: independently\newline
+	& \raisebox{-6.0cm}{\includegraphics[width=4.25in]{Help.png}}\\
+	\hline
+	
+	Objective 2: \clientfirstname\ will respond to small talk (e.g., how are you, etc.) in the home or community for 80\% of opportunities for 10 consecutive sessions. 
+	& \\
+	\hline
+	\end{tabular}\\
+
+	\begin{longtable}{|p{11cm}|p{11cm}|}
+	\hline
+	\textbf{Goal 2:  \clientfirstname\ will increase communicative behaviors by \ending.} & \textbf{MEDICAL NECESSITY:  \clientfirstname\ has a Parent PDDBI Composite score of \getcell{3}{T score}{\parent} in the Semantic/Pragmatic Problems (SEMP) category which puts him almost two standard deviations above the mean (see Figure~\ref{fig:PPDDBI}).  Although he has a Parent PDDBI Composite score of \getcell{10}{T score}{\parent} in the Expressive Language (EXPRESS) category, he has a very low score of less than 33 in the EXPRESS subcategory of Expressive Language Competence. He has impairments in the use of eye contact, abnormal speech patterns, and lack of coordinated nonverbal communication.} \\ 
+	\hline
+	Objective 1: \clientfirstname\ will follow instructions with \underline{\hspace{0.5cm}} or an action and two objects (e.g., ‘bring me the crayons and the paper’ or ‘sit down and eat your lunch’ in the home or community for 80\% of opportunities for 10 consecutive 		sessions. \newline\newline
+	Sd1: 2 actions in the same room\newline
+	Sd2: 2 actions across rooms\newline
+	Sd3: 3 actions across rooms\newline
+	& \raisebox{-5.5cm}{\includegraphics[width=4.25in]{Instructions.png}}\\ 
+	\hline
+	
+	Objective 2: \clientfirstname\ will accept contingencies in ‘if-then’ form over a \underline{\hspace{0.5cm}} time interval in the home or community for 80\% of opportunities for 10 consecutive sessions. \newline\newline
+	Sd1: 10 minutes\newline
+	Sd2: 20 minutes\newline
+	Sd3: 30 minutes\newline
+	& \raisebox{-5.5cm}{\includegraphics[width=4.25in]{if-then.png}}\\ 
+	\hline
+	
+	Objective 3: \clientfirstname\ will listen to a story or informational broadcast for
+	\underline{\hspace{0.5cm}} for 80\% of opportunities in the home for
+	10 consecutive sessions. \newline\newline
+	Sd1: 5 minutes\newline
+	Sd2: 10 minutes\newline
+	Sd3: 15 minutes\newline
+	& \raisebox{-5.5cm}{\includegraphics[width=4.25in]{Listen.png}}\\ 
+	\hline
+	\end{longtable}
+
+	\begin{tabular}{|p{11cm}|p{11cm}|}
+	\hline
+	\textbf{Goal 3:  \clientfirstname\ will develop skills for making and maintaining relationships appropriate to his developmental level \ending.} & \textbf{MEDICAL NECESSITY:  \clientfirstname\ has a Teacher PDDBI Composite score of \getcell{2}{T score}{\teacher} in the Social Pragmatic Problems (SOCPP) category which puts him over one standard deviation above the mean (see Figure~\ref{fig:composite}).  He also has a Parent PDDBI Composite score of \getcell{9}{T score}{\teacher} in the Social Approach (SOCAPP) category showing weakness in social interaction behaviors (33) and social imitative behaviors (33). \clientfirstname\ has difficulty developing and maintaining relationships, adjusting his behavior to suit the social context, and an absence of interest in others.} \\ 
+	\hline
+	Objective 1: \clientfirstname\ will ask others to play with him \underline{\hspace{0.5cm}} in the home or community for 80\% of opportunities for 10 consecutive sessions. \newline\newline
+	Sd1: with a visual prompt\newline
+	Sd2: independently\newline
+	& \raisebox{-5.5cm}{\includegraphics[width=4.25in]{Play.png}}\\ 
+	\hline
+	Objective 2: \clientfirstname\ will tell about experiences in detail (who, what, where, when) in the home for 80\% of opportunities for 10 consecutive sessions.  
+	& \raisebox{-5.5cm}{\includegraphics[width=4.25in]{experiences.png}}\\ 
+	\hline
+	Objective 3: \clientfirstname\ will give simple directions (e.g., how to play a game or make something) in the home for 80\% of opportunities for 10 consecutive sessions.\\
+	\hline
+	\end{tabular}\\
+
+\textbf{Domain: Restricted, Repetitive Patterns of Behavior, Interests, or Activities}
+	
+	\begin{longtable}{|p{11cm}|p{11cm}|}
+	\hline
+	\textbf{Goal 1: \clientfirstname\ will decrease adherence to routines, rituals, resistance to change, same food, etc. by \ending.} & \textbf{MEDICAL NECESSITY:  \clientfirstname\ has a PDDBI Composite score of 41 in the Ritualisms/Resistance to Change (RITUAL) category which puts him almost one full standard deviation below the mean. He demonstrates adherence to routine, ritualized patterns of verbal and nonverbal behavior, excessive resistance to change, and rigid thinking.}\\
+	\hline
+	Objective 1: \clientfirstname\ will reduce problem behaviors to \underline{\hspace{0.5cm}} of 15 minute intervals or less in the home or community during sessions for 1 calendar month. \newline\newline
+	Sd1: 50 minutes\newline
+	Sd2: 40 minutes\newline
+	Sd3: 30 minutes\newline
+	& \raisebox{-5.5cm}{\includegraphics[width=4.25in]{problems.png}}\\  
+	\hline
+	Objective 2: \clientfirstname\ will follow a posted schedule with no more than one prompt per transition in the home for 80\% of opportunities for 10 consecutive sessions. 
+	& \raisebox{-5.5cm}{\transparent{1.0}\includegraphics[width=4.25in]{Schedule.png}}\\ 
+	\hline
+	Objective 3: \textbf{***PARENT GOAL***} Caregiver will deliver reinforcers for completion of activities without problem behaviors in the home for 100\% of opportunities for 10 consecutive sessions. 
+	& \raisebox{-5.5cm}{\transparent{1.0}\includegraphics[width=4.25in]{parent.png}}\\ 
+	\hline
+	\end{longtable}
+
+\end{landscape}
+
+\section{Recommended Level of Support}
+\clientfirstname\ demonstrates deficits in multiple domains, most notably socialization, adaptive, communication, emotional and self-regulation, age appropriate cognitive skills, and language skills such as reporting internal states in self and others, identifying others’ perspectives in social conflicts and self-advocacy.  These are significant challenges that impact \clientfirstname's day-to-day life.  The focus of \clientfirstname’s therapy program is to address skills in the following domains:  (a) intermediate social skills (b) self-monitoring and self-regulation (c) adaptive skills (d) intermediate communication skills and (e) cognitive skills. 
+
+\section{Hours of ABA Each Week}
+
+	\begin{tabular}{|l||l|} 
+		\hline
+		\textbf{By BCBA or BCBA-D} & \BCBAhours\ hours\\
+		\hline
+		\textbf{By BCaBA, BT, and/or RBT(s)} &  \tutorhours\ hours\\
+		\hline
+		\textbf{Total hours per week} & \totalhours\ hours\\
+		\hline
+		\textbf{Name of Tutor(s)} & \tutor \\
+		\hline
+	\end{tabular}
+
+\section{ABA Techniques}
+Applied Behavior Analysis techniques used to teach skill acquisition, fluency, generalization, and maintenance of the below treatment goals and objectives include: (a) clear instruction, (b) probe, (c) prompts and errorless learning, (d) stimulus transfer procedures using a constant time delay of 2-5 seconds depending on target skill, (e) differential reinforcement of successive approximations, (f) extinction of skills previously mastered, (g) behavioral momentum, (h) multiple antecedent based interventions including: a visual schedule, timer, priming, choices, and using highly preferred stimuli. In addition, Emanuel benefits from implementation of visual schedules and visual supports for self-monitoring of objectives.  These are introduced, taught, and faded to independence through shaping, extinction, and differential reinforcement techniques. 
+
+\section{Coordination of Care}
+There are no other related services at this time.
+
+\section{Parental Involvement}
+Parental involvement is crucial to a successful home ABA program since the parents will be interacting with the child for a much greater percentage of time.  Ongoing parental communication will be conducted to ensure that \clientfirstname’s parents are informed of his progress and any need for adjustments in the program.  For applicable goals, parents will be trained to implement procedures in the absence of the therapist to ensure fidelity across people and settings.  His parents will also be invited to attend ongoing ABA classes provided by ABX Solutions.
+
+\section{Discharge Criteria and Transition Plan}
+Transition:  Patient will have a systematic drop in the number of house he receives from in 10\%-20\% intervals of duration of hours then move to consultant weekly visits to support maintenance and parent coaching. \clientfirstname will begin the transition plan when he has less than a 6-month developmental delay in adaptive, socialization, and communication domains for six consecutive months.  
+
+	\begin{enumerate}
+	\item \clientfirstname\ will use communication skills to answer questions, gain information, and interact with peers appropriately across all environments and people.
+	\item \clientfirstname\ will develop at least one friendship outside of school that he is able to maintain independently.
+	\item \clientfirstname\ will learn replacement strategies for his sensory needs and will have no problem behavior in home or public for a six month period.
+	\end{enumerate}
+
+Should any of the following circumstances become evident during the treatment plan period, services will be terminated and referral to another provider will be issued: 
+	\begin{itemize}
+	\item Lack of adherence to attendance policy and/or to recommended therapeutic level of care. 
+	\item Lack of adherence to stated parent goals and objectives. 
+	\item Demonstration of continued pattern of actions that are counter-therapeutic.
+	\item Use of non-evidence-based therapeutic practices. 
+	\item Behavioral concerns are outside the scope of the consultant’s expertise. 
+	\item Unwelcome, unsafe, or unclean environment for therapeutic services. 
+	\end{itemize}
+
+\section{Additional Information and Resources}
+	\begin{itemize}
+	\item Autism Speaks: https://www.autismspeaks.org/ 
+	\item South Carolina Autism Society: http://scautism.org/
+	\item Family Resource Center for Disabilities and Special Needs: http://frcdsn.org/
+	\item Lowcountry Autism Consortium (LAC): http://www.lowcountryautismconsortium.org/
+	\item Charleston Miracle League: http://www.charlestonmiracleleague.org/schedules/ 
+	\end{itemize}
+
+Should there be any questions or concerns, please feel free to contact us. 
+
+\section{Signatures}
+
+	\vspace{1cm}
+
+	\begin{tabular}{|l||l|}
+	\multicolumn{1}{c}{\transparent{0.9999}\includegraphics[]{sig.png}} & \multicolumn{1}{r}{} \\
+	\hline
+	\multicolumn{1}{l}{\momname} & \multicolumn{1}{l}{September 27, 2017}\\
+	\end{tabular}
+
+	\vspace{2cm}	
+
+	\noindent
+	\begin{tabular}{|l||l|}
+	\multicolumn{1}{c}{\transparent{0.9999}\includegraphics[]{Blake_sig.png}} & \multicolumn{1}{r}{} \\
+	\hline
+	\multicolumn{1}{l}{Blake Crosby, M.Ed., BCBA} & \multicolumn{1}{l}{September 27, 2017}\\
+	\end{tabular}
+
+
+\end{document}
